@@ -1,10 +1,15 @@
+package solitaire;
+
+
 import java.applet.Applet;
-import java.awt.Button;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JApplet;
+import javax.swing.JButton;
 
 ///////////////////////////
 // Defines Solitaire class
@@ -73,7 +78,7 @@ public class Solitaire extends Applet
   public void init() 
   {
     // Create a new game button
-    Button b = new Button("New game");
+    JButton b = new JButton("New game");
 
     // Define, instantiate, and register a listener to handle button presses
     b.addActionListener(new ActionListener() {
@@ -85,7 +90,8 @@ public class Solitaire extends Applet
     });
 
     // Add the button to the applet
-    add(b);
+    this.add(b);
+
 
     // Define, instantiate and register a MouseListener object.
     addMouseListener(new MouseAdapter() {

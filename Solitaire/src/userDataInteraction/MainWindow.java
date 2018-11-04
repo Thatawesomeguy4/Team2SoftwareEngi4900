@@ -76,7 +76,17 @@ public class MainWindow extends WindowTemplate
 		//define action listeners
 		play.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-			    //MainWindow.play;
+				  mainFrame.dispose();
+				  MainWindow.play();
+			  } 
+			} );
+		
+		createProfile.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  //launch create profile window
+				  mainFrame.dispose();
+				  CreateUserWindow createUserWindow = new CreateUserWindow();
+				  createUserWindow.buildWindow();
 			  } 
 			} );
 		

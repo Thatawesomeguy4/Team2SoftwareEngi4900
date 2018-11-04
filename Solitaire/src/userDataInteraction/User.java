@@ -24,6 +24,9 @@ public class User implements Serializable
 		this.firstName = fName;
 		this.lastName = lName;
 		this.age = age;
+		this.timePlayed = 0;
+		this.fastestGame = 0;
+		this.gamesPlayed = 0;
 	}
 	
 	public String getFirstName()

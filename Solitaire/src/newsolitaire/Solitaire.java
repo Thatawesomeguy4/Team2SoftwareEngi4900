@@ -762,7 +762,7 @@ public class Solitaire
 		table.repaint();
 	}
 
-	public static void main(String[] args)
+	public static void run()
 	{
 
 		Container contentPane;

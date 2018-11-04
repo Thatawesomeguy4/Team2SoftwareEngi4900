@@ -107,8 +107,8 @@ public class MainWindow extends WindowTemplate
 	
 	public static void play()
 	{
-		Solitaire game = new Solitaire();
-		game.init();
+		
+		newsolitaire.Solitaire.run();
 	}
 	
 }

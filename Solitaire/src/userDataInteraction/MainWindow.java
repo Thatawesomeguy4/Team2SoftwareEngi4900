@@ -35,10 +35,8 @@ public class MainWindow extends WindowTemplate
 	 */
 	public void buildWindow()
 	{
-		
-		while (refreshWindow)
-		{
-		
+			//set refresh bool to false to begin the loop.
+			refreshWindow = false;
 			//declare frame
 			JFrame mainFrame = new JFrame("main menu");
 			
@@ -87,9 +85,9 @@ public class MainWindow extends WindowTemplate
 			createProfile.addActionListener(new ActionListener() { 
 				  public void actionPerformed(ActionEvent e) { 
 					  //launch create profile window
-					  mainFrame.dispose();
 					  CreateUserWindow createUserWindow = new CreateUserWindow();
 					  createUserWindow.buildWindow();
+					  
 				  } 
 				} );
 			
@@ -105,7 +103,6 @@ public class MainWindow extends WindowTemplate
 			//set frame visibility to true
 			mainFrame.setVisible(true);
 			
-		}
 	}
 	
 	public static void play()

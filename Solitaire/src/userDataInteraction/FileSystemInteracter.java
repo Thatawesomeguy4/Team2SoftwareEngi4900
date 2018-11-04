@@ -17,15 +17,39 @@ public class FileSystemInteracter
 {
 	
 	//method to serialize a user
-	public static void serializeUser()
+	public static void serializeUser(User user)
 	{
-		
+		try{
+            FileOutputStream fos= new FileOutputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\" + user.getFirstName() + user.getLastName());
+            ObjectOutputStream oos= new ObjectOutputStream(fos);
+            oos.writeObject(user);
+            oos.close();
+            fos.close();
+          }catch(IOException ioe){
+               ioe.printStackTrace();
+           }
 	}
 	
 	//method to de-serialize a user
-	public static void deserializeUser()
+	public static User deserializeUser(String user)
 	{
-		
+		User userToReturn = null;
+		try
+        {
+            FileInputStream fis = new FileInputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\USERLIST");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            userToReturn = (User) ois.readObject();
+            ois.close();
+            fis.close();
+         }catch(IOException ioe){
+             ioe.printStackTrace();
+             return null;
+          }catch(ClassNotFoundException c){
+             System.out.println("Class not found");
+             c.printStackTrace();
+             return null;
+          }
+		return userToReturn;
 	}
 	
 	//this method will add a new username to the user arraylist

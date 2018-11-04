@@ -14,7 +14,7 @@ import javax.swing.JButton;
 ///////////////////////////
 // Defines Solitaire class
 ///////////////////////////
-public class Solitaire extends Applet 
+public class Solitaire extends JApplet 
 {
   final static int no_card_piles  = 13; //originally 13, list of all card piles
   final static int no_suit_piles  = 4;

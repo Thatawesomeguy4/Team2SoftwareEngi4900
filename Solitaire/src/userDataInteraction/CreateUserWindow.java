@@ -30,7 +30,7 @@ public class CreateUserWindow extends WindowTemplate
 	private JTextField age;
 	private ArrayList<String> userList;
 	
-	public int buildWindow()
+	public void buildWindow()
 	{
 		//declare frame
 		frame = new JFrame("Create User");
@@ -124,7 +124,6 @@ public class CreateUserWindow extends WindowTemplate
         
         frame.setVisible(true);
 		
-		return 0;
 	}
 	
 	//this method is responsible for creating and serializing the user
@@ -159,14 +158,18 @@ public class CreateUserWindow extends WindowTemplate
         //user input valid, create user
         else
         {
+        	int convertedAge = Integer.parseInt(ageInput);
+        	User newUser = new User(firstNameInput, lastNameInput, convertedAge);
+        	FileSystemInteracter.serializeUser(newUser);
             JOptionPane.showMessageDialog(frame, "Your input was valid", "Creating User", JOptionPane.PLAIN_MESSAGE);
+            frame.dispose();
         }
 	}
 	
-	//this method fetches the txt user list
+	//this method fetches the user list
 	private void getUserList()
 	{
-		//call the system I/O class (yet to be built) to read in the user txt list
+		this.userList = FileSystemInteracter.getUserList();
 	}
 	
 }

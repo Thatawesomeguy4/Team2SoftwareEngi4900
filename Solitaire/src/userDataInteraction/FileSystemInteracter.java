@@ -28,6 +28,7 @@ public class FileSystemInteracter
           }catch(IOException ioe){
                ioe.printStackTrace();
            }
+		FileSystemInteracter.addUserToList(user.getFirstName() + user.getLastName());
 	}
 	
 	//method to de-serialize a user
@@ -66,11 +67,9 @@ public class FileSystemInteracter
             fis.close();
          }catch(IOException ioe){
              ioe.printStackTrace();
-             return;
           }catch(ClassNotFoundException c){
              System.out.println("Class not found");
              c.printStackTrace();
-             return;
           }
 		
         userList.add(user);
@@ -102,11 +101,13 @@ public class FileSystemInteracter
 		    fis.close();
 		}catch(IOException ioe){
 		    ioe.printStackTrace();
-		    return null;
+		    //return an empty list
+		    return new ArrayList<String>();
 		}catch(ClassNotFoundException c){
 		    System.out.println("Class not found");
 		    c.printStackTrace();
-		    return null;
+		    //return an empty list
+		    return new ArrayList<String>();
 		}
 		
 		return userList;

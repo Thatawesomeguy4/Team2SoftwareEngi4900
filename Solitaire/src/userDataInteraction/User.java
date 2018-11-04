@@ -11,12 +11,12 @@ import java.io.Serializable;
  */
 public class User implements Serializable
 {
-	String firstName; //user first name
-	String lastName; //user last name
-	int age; //user age
-	double timePlayed; //total time the user has spent playing the game
-	double fastestGame; //the least amount of time it took the user to win a game
-	int gamesPlayed; //number of new games started
+	private String firstName; //user first name
+	private String lastName; //user last name
+	private int age; //user age
+	private double timePlayed; //total time the user has spent playing the game
+	private double fastestGame; //the least amount of time it took the user to win a game
+	private int gamesPlayed; //number of new games started
 	
 	//default constructor
 	public User(String fName, String lName, int age)

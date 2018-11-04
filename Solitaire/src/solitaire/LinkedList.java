@@ -1,3 +1,4 @@
+package solitaire;
 //////////////////////////////
 // Defines a LinkedList class
 //

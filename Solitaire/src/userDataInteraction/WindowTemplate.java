@@ -35,9 +35,9 @@ public class WindowTemplate
 	}
 	
 	//override in subclass
-	public int buildWindow()
+	public void buildWindow()
 	{
-		return 0;
+		
 	}
 	
 	//might remove, just here for testing

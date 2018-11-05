@@ -28,87 +28,87 @@ import solitaire.Solitaire;
  */
 public class MainWindow extends WindowTemplate 
 {
+	private boolean refreshWindow;
+	
 	/**
-	 * return 1 to play solitaire
+	 * 
 	 */
-	public int buildWindow()
+	public void buildWindow()
 	{
-		//number to return
-		int commandNumber = 0;
-		
-		//declare frame
-		JFrame mainFrame = new JFrame("main menu");
-		
-		//ensure that the application will close if this frame is exited
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//declare title text
-		JLabel title = new JLabel("Welcome to Solitaire! \n Please Choose an Option:", SwingConstants.CENTER);
-		
-		//define text size
-		title.setPreferredSize(new Dimension(300, 100));
-		
-		//add title to frame
-		mainFrame.getContentPane().add(title, BorderLayout.NORTH);
-		
-		//create the panel to hold all of our buttons
-		JPanel buttons = new JPanel();
-		
-		//create the buttons
-		JButton play = new JButton("Play");
-		//play.setPreferredSize(new Dimension(300, 100));
-		JButton selectProfile = new JButton("Select Profile");
-		//selectProfile.setPreferredSize(new Dimension(300, 100));
-		JButton createProfile = new JButton("Create Profile");
-		//createProfile.setPreferredSize(new Dimension(300, 100));
-		JButton viewStats = new JButton("View Statistics");
-		//viewStats.setPreferredSize(new Dimension(300, 100));
-		JButton credits = new JButton("Credits");
-		//credits.setPreferredSize(new Dimension(300, 100));
-		
-		//add buttons to content window
-		buttons.add(play);
-		buttons.add(selectProfile);
-		buttons.add(createProfile);
-		buttons.add(viewStats);
-		buttons.add(credits);
-		
-		//define action listeners
-		play.addActionListener(new ActionListener() { 
-			  public void actionPerformed(ActionEvent e) { 
-				  mainFrame.dispose();
-				  MainWindow.play();
-			  } 
-			} );
-		
-		createProfile.addActionListener(new ActionListener() { 
-			  public void actionPerformed(ActionEvent e) { 
-				  //launch create profile window
-				  mainFrame.dispose();
-				  CreateUserWindow createUserWindow = new CreateUserWindow();
-				  createUserWindow.buildWindow();
-			  } 
-			} );
-		
-		//tell JPanel that we want a grid layout
-		buttons.setLayout(new BoxLayout(buttons, BoxLayout.PAGE_AXIS));
-		
-		//add button pane to the frame
-		mainFrame.getContentPane().add(buttons);
-		
-		//tell JFrame to look at what is in the pane and set the window size
-		mainFrame.pack();
-		
-		//set frame visibility to true
-		mainFrame.setVisible(true);
-		
-		return commandNumber;
+			//set refresh bool to false to begin the loop.
+			refreshWindow = false;
+			//declare frame
+			JFrame mainFrame = new JFrame("main menu");
+			
+			//ensure that the application will close if this frame is exited
+			mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			//declare title text
+			JLabel title = new JLabel("Welcome to Solitaire! \n Please Choose an Option:", SwingConstants.CENTER);
+			
+			//define text size
+			title.setPreferredSize(new Dimension(300, 100));
+			
+			//add title to frame
+			mainFrame.getContentPane().add(title, BorderLayout.NORTH);
+			
+			//create the panel to hold all of our buttons
+			JPanel buttons = new JPanel();
+			
+			//create the buttons
+			JButton play = new JButton("Play");
+			//play.setPreferredSize(new Dimension(300, 100));
+			JButton selectProfile = new JButton("Select Profile");
+			//selectProfile.setPreferredSize(new Dimension(300, 100));
+			JButton createProfile = new JButton("Create Profile");
+			//createProfile.setPreferredSize(new Dimension(300, 100));
+			JButton viewStats = new JButton("View Statistics");
+			//viewStats.setPreferredSize(new Dimension(300, 100));
+			JButton credits = new JButton("Credits");
+			//credits.setPreferredSize(new Dimension(300, 100));
+			
+			//add buttons to content window
+			buttons.add(play);
+			buttons.add(selectProfile);
+			buttons.add(createProfile);
+			buttons.add(viewStats);
+			buttons.add(credits);
+			
+			//define action listeners
+			play.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+					  mainFrame.dispose();
+					  MainWindow.play();
+				  } 
+				} );
+			
+			createProfile.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+					  //launch create profile window
+					  CreateUserWindow createUserWindow = new CreateUserWindow();
+					  createUserWindow.buildWindow();
+					  
+				  } 
+				} );
+			
+			//tell JPanel that we want a grid layout
+			buttons.setLayout(new BoxLayout(buttons, BoxLayout.PAGE_AXIS));
+			
+			//add button pane to the frame
+			mainFrame.getContentPane().add(buttons);
+			
+			//tell JFrame to look at what is in the pane and set the window size
+			mainFrame.pack();
+			
+			//set frame visibility to true
+			mainFrame.setVisible(true);
+			
 	}
 	
 	public static void play()
 	{
-		Solitaire game = new Solitaire();
-		game.init();
+		
+		newsolitaire.Solitaire.run();
 	}
 	
 }

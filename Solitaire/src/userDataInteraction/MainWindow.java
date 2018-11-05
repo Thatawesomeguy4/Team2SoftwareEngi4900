@@ -64,7 +64,7 @@ public class MainWindow extends WindowTemplate
 			//createProfile.setPreferredSize(new Dimension(300, 100));
 			JButton viewStats = new JButton("View Statistics");
 			//viewStats.setPreferredSize(new Dimension(300, 100));
-			JButton credits = new JButton("Credits");
+			JButton customize = new JButton("Customize Menu");
 			//credits.setPreferredSize(new Dimension(300, 100));
 			
 			//add buttons to content window
@@ -72,7 +72,7 @@ public class MainWindow extends WindowTemplate
 			buttons.add(selectProfile);
 			buttons.add(createProfile);
 			buttons.add(viewStats);
-			buttons.add(credits);
+			buttons.add(customize);
 			
 			//define action listeners
 			play.addActionListener(new ActionListener() { 

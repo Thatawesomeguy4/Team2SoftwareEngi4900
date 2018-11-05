@@ -132,7 +132,7 @@ public class FileSystemInteracter
 	//1. selectProfile
 	//2. createProfile
 	//3. stats
-	public static ArrayList<Boolean> getMenuSettings()
+	public static void getMenuSettings()
 	{
 		//read in the user list
 				ArrayList<Boolean> settings = new ArrayList<Boolean>();
@@ -145,16 +145,16 @@ public class FileSystemInteracter
 				    fis.close();
 				}catch(IOException ioe){
 				    ioe.printStackTrace();
-				    //return an empty list
-				    return new ArrayList<Boolean>();
+				    return;
 				}catch(ClassNotFoundException c){
 				    System.out.println("Class not found");
 				    c.printStackTrace();
-				    //return an empty list
-				    return new ArrayList<Boolean>();
+				    return;
 				}
 				
-				return settings;
+				MenuCustomizationSettings.selectProfile = settings.get(0);
+				MenuCustomizationSettings.createProfile = settings.get(1);
+				MenuCustomizationSettings.stats = settings.get(2);
 	}
 	
 }

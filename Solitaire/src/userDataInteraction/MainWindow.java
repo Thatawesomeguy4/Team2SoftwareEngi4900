@@ -29,9 +29,6 @@ import solitaire.Solitaire;
 public class MainWindow extends WindowTemplate 
 {
 	private boolean refreshWindow;
-	public static boolean selectProfile; //bool to decide to/not to display select profile button.
-	public static boolean createProfile; //bool to decide to/not to display create profile button.
-	public static boolean stats; //bool to decide to/not to display stats button.
 	
 
 	public void buildWindow()
@@ -68,11 +65,23 @@ public class MainWindow extends WindowTemplate
 			JButton customize = new JButton("Customize Menu");
 			//credits.setPreferredSize(new Dimension(300, 100));
 			
+			//fetch window customization settings.
+			FileSystemInteracter.getMenuSettings();
+			
 			//add buttons to content window
 			buttons.add(play);
-			buttons.add(selectProfile);
-			buttons.add(createProfile);
-			buttons.add(viewStats);
+			if (MenuCustomizationSettings.selectProfile)
+			{
+				buttons.add(selectProfile);
+			}
+			if (MenuCustomizationSettings.createProfile)
+			{
+				buttons.add(createProfile);
+			}
+			if (MenuCustomizationSettings.stats)
+			{
+				buttons.add(viewStats);
+			}
 			buttons.add(customize);
 			
 			//define action listeners
@@ -101,7 +110,7 @@ public class MainWindow extends WindowTemplate
 				  } 
 				} );
 			
-			selectProfile.addActionListener(new ActionListener() { 
+			customize.addActionListener(new ActionListener() { 
 				  public void actionPerformed(ActionEvent e) { 
 					  //launch create profile window
 					  CustomizeWindow customizeWindow = new CustomizeWindow();

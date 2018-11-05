@@ -29,10 +29,11 @@ import solitaire.Solitaire;
 public class MainWindow extends WindowTemplate 
 {
 	private boolean refreshWindow;
+	public static boolean selectProfile; //bool to decide to/not to display select profile button.
+	public static boolean createProfile; //bool to decide to/not to display create profile button.
+	public static boolean stats; //bool to decide to/not to display stats button.
 	
-	/**
-	 * 
-	 */
+
 	public void buildWindow()
 	{
 			//set refresh bool to false to begin the loop.

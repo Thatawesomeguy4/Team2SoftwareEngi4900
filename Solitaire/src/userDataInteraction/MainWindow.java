@@ -30,9 +30,7 @@ public class MainWindow extends WindowTemplate
 {
 	private boolean refreshWindow;
 	
-	/**
-	 * 
-	 */
+
 	public void buildWindow()
 	{
 			//set refresh bool to false to begin the loop.
@@ -64,15 +62,27 @@ public class MainWindow extends WindowTemplate
 			//createProfile.setPreferredSize(new Dimension(300, 100));
 			JButton viewStats = new JButton("View Statistics");
 			//viewStats.setPreferredSize(new Dimension(300, 100));
-			JButton credits = new JButton("Credits");
+			JButton customize = new JButton("Customize Menu");
 			//credits.setPreferredSize(new Dimension(300, 100));
+			
+			//fetch window customization settings.
+			FileSystemInteracter.getMenuSettings();
 			
 			//add buttons to content window
 			buttons.add(play);
-			buttons.add(selectProfile);
-			buttons.add(createProfile);
-			buttons.add(viewStats);
-			buttons.add(credits);
+			if (MenuCustomizationSettings.selectProfile)
+			{
+				buttons.add(selectProfile);
+			}
+			if (MenuCustomizationSettings.createProfile)
+			{
+				buttons.add(createProfile);
+			}
+			if (MenuCustomizationSettings.stats)
+			{
+				buttons.add(viewStats);
+			}
+			buttons.add(customize);
 			
 			//define action listeners
 			play.addActionListener(new ActionListener() { 
@@ -87,6 +97,33 @@ public class MainWindow extends WindowTemplate
 					  //launch create profile window
 					  CreateUserWindow createUserWindow = new CreateUserWindow();
 					  createUserWindow.buildWindow();
+					  
+				  } 
+				} );
+			
+			selectProfile.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+					  //launch create profile window
+					  SelectProfileWindow selectProfileWindow = new SelectProfileWindow();
+					  selectProfileWindow.buildWindow();
+					  
+				  } 
+				} );
+			
+			customize.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+					  //launch create profile window
+					  CustomizeWindow customizeWindow = new CustomizeWindow();
+					  customizeWindow.buildWindow();
+					  
+				  } 
+				} );
+			
+			viewStats.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+					  //launch create profile window
+					  StatisticsWindow statsWindow = new StatisticsWindow();
+					  statsWindow.buildWindow();
 					  
 				  } 
 				} );

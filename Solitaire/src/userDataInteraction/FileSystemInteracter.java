@@ -28,7 +28,11 @@ public class FileSystemInteracter
           }catch(IOException ioe){
                ioe.printStackTrace();
            }
+		
+		if (!(FileSystemInteracter.getUserList().contains(user.getFirstName() + user.getLastName())))
+		{
 		FileSystemInteracter.addUserToList(user.getFirstName() + user.getLastName());
+		}
 	}
 	
 	//method to de-serialize a user
@@ -37,7 +41,7 @@ public class FileSystemInteracter
 		User userToReturn = null;
 		try
         {
-            FileInputStream fis = new FileInputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\USERLIST");
+            FileInputStream fis = new FileInputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\" + user);
             ObjectInputStream ois = new ObjectInputStream(fis);
             userToReturn = (User) ois.readObject();
             ois.close();
@@ -111,6 +115,50 @@ public class FileSystemInteracter
 		}
 		
 		return userList;
+	}
+	
+	//this method will serialize the menu customization settings
+	public static void serializeMenuSettings(ArrayList<Boolean> settings)
+	{
+		try{
+            FileOutputStream fos= new FileOutputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\MENUSETTINGS");
+            ObjectOutputStream oos= new ObjectOutputStream(fos);
+            oos.writeObject(settings);
+            oos.close();
+            fos.close();
+          }catch(IOException ioe){
+               ioe.printStackTrace();
+           }
+	}
+	
+	//this method will deserialize the menu settings
+	//NOTE THE ORDER OF THE SETTINGS IN THE ARRAY SHOULD BE:
+	//1. selectProfile
+	//2. createProfile
+	//3. stats
+	public static void getMenuSettings()
+	{
+		//read in the user list
+				ArrayList<Boolean> settings = new ArrayList<Boolean>();
+				try
+				{
+					FileInputStream fis = new FileInputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\MENUSETTINGS");
+				    ObjectInputStream ois = new ObjectInputStream(fis);
+				    settings = (ArrayList<Boolean>) ois.readObject();
+				    ois.close();
+				    fis.close();
+				}catch(IOException ioe){
+				    ioe.printStackTrace();
+				    return;
+				}catch(ClassNotFoundException c){
+				    System.out.println("Class not found");
+				    c.printStackTrace();
+				    return;
+				}
+				
+				MenuCustomizationSettings.selectProfile = settings.get(0);
+				MenuCustomizationSettings.createProfile = settings.get(1);
+				MenuCustomizationSettings.stats = settings.get(2);
 	}
 	
 }

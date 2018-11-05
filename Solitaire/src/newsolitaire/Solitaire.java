@@ -653,6 +653,20 @@ public class Solitaire
 
 			if (checkForWin && gameOver)
 			{
+				//update statistics on win
+				userDataInteraction.MainMenu.currentUser.incrementGamesWon();
+				if (userDataInteraction.MainMenu.currentUser.getFastestGame() > time || userDataInteraction.MainMenu.currentUser.getFastestGame() == 0)
+				{
+					userDataInteraction.MainMenu.currentUser.setFastestGame(time);
+				}
+				userDataInteraction.MainMenu.currentUser.updateTimePlayed(time);
+				userDataInteraction.MainMenu.currentUser.increaseScore(score);
+				if (userDataInteraction.MainMenu.currentUser.getHighScore() < score || userDataInteraction.MainMenu.currentUser.getHighScore() == 0)
+				{
+					userDataInteraction.MainMenu.currentUser.setHighScore(score);
+				}
+				//serialize user
+				userDataInteraction.FileSystemInteracter.serializeUser(userDataInteraction.MainMenu.currentUser);
 				JOptionPane.showMessageDialog(table, "Congratulations! You've Won!");
 				statusBox.setText("Game Over!");
 			}
@@ -751,6 +765,11 @@ public class Solitaire
 		statusBox.setBounds(605, TABLE_HEIGHT - 70, 180, 30);
 		statusBox.setEditable(false);
 		statusBox.setOpaque(false);
+		
+		//update statistics
+		userDataInteraction.MainMenu.currentUser.incrementGamesPlayed();
+		//serialize user
+		userDataInteraction.FileSystemInteracter.serializeUser(userDataInteraction.MainMenu.currentUser);
 
 		table.add(statusBox);
 		table.add(toggleTimerButton);

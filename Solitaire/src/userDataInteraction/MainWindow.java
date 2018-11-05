@@ -119,6 +119,15 @@ public class MainWindow extends WindowTemplate
 				  } 
 				} );
 			
+			viewStats.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+					  //launch create profile window
+					  StatisticsWindow statsWindow = new StatisticsWindow();
+					  statsWindow.buildWindow();
+					  
+				  } 
+				} );
+			
 			//tell JPanel that we want a grid layout
 			buttons.setLayout(new BoxLayout(buttons, BoxLayout.PAGE_AXIS));
 			

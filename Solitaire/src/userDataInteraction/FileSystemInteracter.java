@@ -37,7 +37,7 @@ public class FileSystemInteracter
 		User userToReturn = null;
 		try
         {
-            FileInputStream fis = new FileInputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\USERLIST");
+            FileInputStream fis = new FileInputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\" + user);
             ObjectInputStream ois = new ObjectInputStream(fis);
             userToReturn = (User) ois.readObject();
             ois.close();

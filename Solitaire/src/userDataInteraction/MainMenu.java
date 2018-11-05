@@ -13,6 +13,8 @@ import java.awt.Toolkit;
 
 public class MainMenu 
 {
+	
+	public static User currentUser;
 
 	public static void main(String[] args) 
 	{

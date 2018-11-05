@@ -28,7 +28,11 @@ public class FileSystemInteracter
           }catch(IOException ioe){
                ioe.printStackTrace();
            }
+		
+		if (!(FileSystemInteracter.getUserList().contains(user.getFirstName() + user.getLastName())))
+		{
 		FileSystemInteracter.addUserToList(user.getFirstName() + user.getLastName());
+		}
 	}
 	
 	//method to de-serialize a user

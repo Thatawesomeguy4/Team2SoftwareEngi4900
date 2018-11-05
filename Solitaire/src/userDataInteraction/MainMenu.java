@@ -2,6 +2,7 @@ package userDataInteraction;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 /**
  * 
@@ -26,6 +27,16 @@ public class MainMenu
 		//double screenHeight = screenSize.getHeight();
 		//double screenWidth = screenSize.getWidth();
 		
+		//try to set first user in user list to current user
+		try
+		{
+			ArrayList<String> users = FileSystemInteracter.getUserList();
+			MainMenu.currentUser = FileSystemInteracter.deserializeUser(users.get(0));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		MainWindow primaryWindow = new MainWindow();
 		
 		primaryWindow.buildWindow();

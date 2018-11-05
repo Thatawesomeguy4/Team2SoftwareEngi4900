@@ -101,6 +101,15 @@ public class MainWindow extends WindowTemplate
 				  } 
 				} );
 			
+			selectProfile.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+					  //launch create profile window
+					  CustomizeWindow customizeWindow = new CustomizeWindow();
+					  customizeWindow.buildWindow();
+					  
+				  } 
+				} );
+			
 			//tell JPanel that we want a grid layout
 			buttons.setLayout(new BoxLayout(buttons, BoxLayout.PAGE_AXIS));
 			

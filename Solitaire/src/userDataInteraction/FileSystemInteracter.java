@@ -113,4 +113,48 @@ public class FileSystemInteracter
 		return userList;
 	}
 	
+	//this method will serialize the menu customization settings
+	public static void serializeMenuSettings(ArrayList<Boolean> settings)
+	{
+		try{
+            FileOutputStream fos= new FileOutputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\MENUSETTINGS");
+            ObjectOutputStream oos= new ObjectOutputStream(fos);
+            oos.writeObject(settings);
+            oos.close();
+            fos.close();
+          }catch(IOException ioe){
+               ioe.printStackTrace();
+           }
+	}
+	
+	//this method will deserialize the menu settings
+	//NOTE THE ORDER OF THE SETTINGS IN THE ARRAY SHOULD BE:
+	//1. selectProfile
+	//2. createProfile
+	//3. stats
+	public static ArrayList<Boolean> getMenuSettings()
+	{
+		//read in the user list
+				ArrayList<Boolean> settings = new ArrayList<Boolean>();
+				try
+				{
+					FileInputStream fis = new FileInputStream("C:\\Program Files\\LABELLELUCIEUSERLIST\\MENUSETTINGS");
+				    ObjectInputStream ois = new ObjectInputStream(fis);
+				    settings = (ArrayList<Boolean>) ois.readObject();
+				    ois.close();
+				    fis.close();
+				}catch(IOException ioe){
+				    ioe.printStackTrace();
+				    //return an empty list
+				    return new ArrayList<Boolean>();
+				}catch(ClassNotFoundException c){
+				    System.out.println("Class not found");
+				    c.printStackTrace();
+				    //return an empty list
+				    return new ArrayList<Boolean>();
+				}
+				
+				return settings;
+	}
+	
 }

@@ -145,7 +145,7 @@ public class MainWindow extends WindowTemplate
 	public static void play()
 	{
 		
-		newsolitaire.Solitaire.run();
+		newsolitaire.Solitaire.Play();
 	}
 	
 }

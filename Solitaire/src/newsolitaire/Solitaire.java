@@ -22,7 +22,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-public class Solitaire
+import userDataInteraction.ICardGame;
+import userDataInteraction.Statistics;
+
+public class Solitaire implements ICardGame
 {
 	// CONSTANTS
 	public static final int TABLE_HEIGHT = Card.CARD_HEIGHT * 4;
@@ -781,7 +784,7 @@ public class Solitaire
 		table.repaint();
 	}
 
-	public static void run()
+	public static void Play()
 	{
 
 		Container contentPane;
@@ -803,4 +806,18 @@ public class Solitaire
 		frame.setVisible(true);
 
 	}
+	
+	public static Statistics getStatistics()
+	{
+		Statistics stats = new Statistics();
+		stats.fastestGame = time;
+		stats.gamesPlayed = 1;
+		stats.gameScore = score;
+		stats.gamesWon = 1;
+		stats.timePlayed = time;
+		stats.highScore = score;
+		
+		return stats;
+	}
+
 }

@@ -133,9 +133,14 @@ public class FileSystemInteracter
 	
 	//this method will deserialize the menu settings
 	//NOTE THE ORDER OF THE SETTINGS IN THE ARRAY SHOULD BE:
-	//1. selectProfile
-	//2. createProfile
-	//3. stats
+	//0. selectProfile
+	//1. createProfile
+	//2. stats
+	//3. playLBL
+	//4. playCH
+	//5. playSC
+	//6. playSP
+	//7. playPR
 	public static void getMenuSettings()
 	{
 		//read in the user list
@@ -159,6 +164,11 @@ public class FileSystemInteracter
 				MenuCustomizationSettings.selectProfile = settings.get(0);
 				MenuCustomizationSettings.createProfile = settings.get(1);
 				MenuCustomizationSettings.stats = settings.get(2);
+				MenuCustomizationSettings.playLBL = settings.get(3);
+				MenuCustomizationSettings.playCH = settings.get(4);
+				MenuCustomizationSettings.playSC = settings.get(5);
+				MenuCustomizationSettings.playSP = settings.get(6);
+				MenuCustomizationSettings.playPR = settings.get(7);
 	}
 	
 }

@@ -54,7 +54,11 @@ public class MainWindow extends WindowTemplate
 			JPanel buttons = new JPanel();
 			
 			//create the buttons
-			JButton play = new JButton("Play");
+			JButton playLBL = new JButton("Play La Belle Lucie");
+			JButton playCH = new JButton("Play Chinese Solitaire");
+			JButton playSC = new JButton("Play Scorpion");
+			JButton playSP = new JButton("Play Spider");
+			JButton playPR = new JButton("Play Pyramid");
 			//play.setPreferredSize(new Dimension(300, 100));
 			JButton selectProfile = new JButton("Select Profile");
 			//selectProfile.setPreferredSize(new Dimension(300, 100));
@@ -69,7 +73,26 @@ public class MainWindow extends WindowTemplate
 			FileSystemInteracter.getMenuSettings();
 			
 			//add buttons to content window
-			buttons.add(play);
+			if (MenuCustomizationSettings.playLBL)
+			{
+				buttons.add(playLBL);
+			}
+			if (MenuCustomizationSettings.playCH)
+			{
+				buttons.add(playCH);
+			}
+			if (MenuCustomizationSettings.playSC)
+			{
+				buttons.add(playSC);
+			}
+			if (MenuCustomizationSettings.playSP)
+			{
+				buttons.add(playSP);
+			}
+			if (MenuCustomizationSettings.playPR)
+			{
+				buttons.add(playPR);
+			}
 			if (MenuCustomizationSettings.selectProfile)
 			{
 				buttons.add(selectProfile);
@@ -85,7 +108,7 @@ public class MainWindow extends WindowTemplate
 			buttons.add(customize);
 			
 			//define action listeners
-			play.addActionListener(new ActionListener() { 
+			playLBL.addActionListener(new ActionListener() { 
 				  public void actionPerformed(ActionEvent e) { 
 					  mainFrame.dispose();
 					  MainWindow.play();

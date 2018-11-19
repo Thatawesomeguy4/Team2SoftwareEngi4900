@@ -27,6 +27,11 @@ public class CustomizeWindow extends WindowTemplate
 	JCheckBox selectProfile;
 	JCheckBox createProfile;
 	JCheckBox stats;
+	JCheckBox playLBL;
+	JCheckBox playCH;
+	JCheckBox playSC;
+	JCheckBox playSP;
+	JCheckBox playPR;
 	
 	public void buildWindow()
 	{
@@ -52,11 +57,21 @@ public class CustomizeWindow extends WindowTemplate
 			selectProfile = new JCheckBox("Display Profile Selection Button");
 			createProfile = new JCheckBox("Display Profile Creation Button");
 			stats = new JCheckBox("Display Statistics Button");
+			playLBL = new JCheckBox("Display Play La Belle Lucie Button");
+			playCH = new JCheckBox("Display Play Chinese Solitaire Button");
+			playSC = new JCheckBox("Display Play Scorpion Button");
+			playSP = new JCheckBox("Display Play Spider Button");
+			playPR = new JCheckBox("Display Play Pyramid Button");
 			
 			//set all of the boxes to their current state in the system.
 			selectProfile.setSelected(MenuCustomizationSettings.selectProfile);
 			createProfile.setSelected(MenuCustomizationSettings.createProfile);
 			stats.setSelected(MenuCustomizationSettings.stats);
+			playLBL.setSelected(MenuCustomizationSettings.playLBL);
+			playCH.setSelected(MenuCustomizationSettings.playCH);
+			playSC.setSelected(MenuCustomizationSettings.playCH);
+			playSP.setSelected(MenuCustomizationSettings.playSP);
+			playPR.setSelected(MenuCustomizationSettings.playPR);
 			
 			//create submit button
 			JButton submit = new JButton("submit");
@@ -76,6 +91,11 @@ public class CustomizeWindow extends WindowTemplate
 			windowLayout.setHorizontalGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
 											.addGroup(windowLayout.createSequentialGroup()
 													  .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+															  	.addComponent(playLBL, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+																.addComponent(playCH, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+																.addComponent(playSC, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+																.addComponent(playSP, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+																.addComponent(playPR, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
 															  	.addComponent(selectProfile, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
 															  	.addComponent(createProfile, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
 															  	.addComponent(stats, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
@@ -88,11 +108,26 @@ public class CustomizeWindow extends WindowTemplate
 		            .addGroup(windowLayout.createSequentialGroup()
 		                .addContainerGap()
 		                .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+			                 .addComponent(playLBL, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+			            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			            .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+			                .addComponent(playCH, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+			            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			            .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+				            .addComponent(playSC, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+				        .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+				            .addComponent(playSP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+				        .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+				            .addComponent(playPR, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+		                .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 		                    .addComponent(selectProfile, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 		                .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 			                    .addComponent(createProfile, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-			                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 		                .addGroup(windowLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 		                    .addComponent(stats, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 		                    .addComponent(submit))
@@ -123,6 +158,11 @@ public class CustomizeWindow extends WindowTemplate
 		settings.add(selectProfile.isSelected());
 		settings.add(createProfile.isSelected());
 		settings.add(stats.isSelected());
+		settings.add(playLBL.isSelected());
+		settings.add(playCH.isSelected());
+		settings.add(playSC.isSelected());
+		settings.add(playSP.isSelected());
+		settings.add(playPR.isSelected());
 		FileSystemInteracter.serializeMenuSettings(settings);
 		JOptionPane.showMessageDialog(frame, "Settings Saved! Restart to apply", "Settings", JOptionPane.PLAIN_MESSAGE);
 	}
